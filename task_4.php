@@ -1,3 +1,38 @@
+<?php
+$arr = [
+    [
+        'name' => "My Tasks",
+        'color' => "bg-fusion-400",
+        'num' => "130 / 500",
+        'valuenow' => "65",
+        'width' => "65%",
+    ],
+    [
+        'name' => "Transfered",
+        'color' => "bg-success-500",
+        'num' => "440 TB",
+        'valuenow' => "34",
+        'width' => "34%",
+    ],
+    [
+        'name' => "Bugs Squasheds",
+        'color' => "bg-info-400",
+        'num' => "77%",
+        'valuenow' => "77",
+        'width' => "77%",
+    ],
+    [
+        'name' => "User Testing",
+        'color' => "bg-primary-300",
+        'num' => "7 days",
+        'valuenow' => "84",
+        'width' => "84%;",
+    ],
+
+];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,38 +65,24 @@
                             <button class="btn btn-panel waves-effect waves-themed" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Fullscreen"></button>
                         </div>
                     </div>
+
                     <div class="panel-container show">
                         <div class="panel-content">
-                            <div class="d-flex mt-2">
-                                My Tasks
-                                <span class="d-inline-block ml-auto">130 / 500</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-fusion-400" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                Transfered
-                                <span class="d-inline-block ml-auto">440 TB</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-success-500" role="progressbar" style="width: 34%;" aria-valuenow="34" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                Bugs Squashed
-                                <span class="d-inline-block ml-auto">77%</span>
-                            </div>
-                            <div class="progress progress-sm mb-3">
-                                <div class="progress-bar bg-info-400" role="progressbar" style="width: 77%;" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="d-flex">
-                                User Testing
-                                <span class="d-inline-block ml-auto">7 days</span>
-                            </div>
-                            <div class="progress progress-sm mb-g">
-                                <div class="progress-bar bg-primary-300" role="progressbar" style="width: 84%;" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            <?php
+                                foreach ($arr as $key => $item){?>
+                                    <div class="d-flex <?php echo $item == reset($arr) ? 'mt-2':''?>">
+                                        <?=$item['name']?>
+                                        <span class="d-inline-block ml-auto"><?=$item['num']?></span>
+                                    </div>
+                                    <div class="progress progress-sm mb-3">
+                                        <div class="progress-bar <?=$item['color']?>" role="progressbar" style="width:  <?=$item['width']?>;" aria-valuenow=" <?=$item['valuenow']?>" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                <?}
+                            ?>
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </main>

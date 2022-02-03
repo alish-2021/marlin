@@ -1,3 +1,21 @@
+<?php
+$braedcrumbs = [
+    [
+      'name' => "Главная",
+      'href' => "#"
+    ],
+    [
+        'name' => "PHP",
+        'href' => "#"
+    ],
+    [
+        'name' => "Функции",
+        'href' => "#"
+    ],
+];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,17 +51,22 @@
                     <div class="panel-container show">
                         <div class="panel-content">
                             <ol class="breadcrumb page-breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Главная</a></li>
-                                <li class="breadcrumb-item"><a href="#">PHP</a></li>
-                                <li class="breadcrumb-item active">Функции</li>
+                                <?php
+                                    foreach ($braedcrumbs as $key => $item){
+                                       if($item != end($braedcrumbs)){?>
+                                           <li class="breadcrumb-item"><a href="<?= $item['href']?>"><?= $item['name']?></a></li>
+                                       <?} elseif ($item == end($braedcrumbs)){?>
+                                            <li class="breadcrumb-item active"><?= $item['name']?></li>
+                                       <?}
+
+                                    }
+                                ?>
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
-        
-
         <script src="js/vendors.bundle.js"></script>
         <script src="js/app.bundle.js"></script>
         <script>
